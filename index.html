@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asra (Aspirasi Rakyat)</title>
+    
+    <!-- Meta tag untuk PWA - Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Meta tag untuk browser Safari pada iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Asra">
+    
+    <!-- CSS untuk Styling -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts - Untuk font futuristik (Orbitron) dan formal (Open Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome - Untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Emoji Bendera Indonesia di Paling Atas -->
+    <div class="top-flag-container">
+        <span class="top-flag-emoji">🇮🇩</span>
+    </div>
+
+    <!-- Header Aplikasi -->
+    <header class="main-header">
+        <div class="container">
+            <div class="app-title">
+                <h1>Asra</h1>
+                <p>Aspirasi Rakyat</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#beranda"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="#kirim-aspirasi"><i class="fas fa-paper-plane"></i> Kirim Aspirasi</a></li>
+                    <li><a href="#aspirasi-publik"><i class="fas fa-users"></i> Aspirasi Publik</a></li>
+                    <li><a href="#tentang-asra"><i class="fas fa-info-circle"></i> Tentang</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Bagian Beranda (Hero Section) -->
+        <section id="beranda" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Suarakan Hak dan Aspirasi Anda di Dunia Digital!</h2>
+                    <p class="tagline">Asra adalah platform kolaboratif untuk masyarakat dan pemerintah dalam membentuk ekosistem digital yang adil dan aman.</p>
+                    <div class="user-info-display card">
+                        <p>Selamat datang, <span id="current-user-id">Memuat...</span></p>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#kirim-aspirasi" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Kirim Aspirasi Sekarang</a>
+                        <a href="#aspirasi-publik" class="btn btn-secondary"><i class="fas fa-eye"></i> Lihat Aspirasi Publik</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Kirim Aspirasi (Formulir dalam Kartu) -->
+        <section id="kirim-aspirasi" class="form-section">
+            <div class="container">
+                <div class="card">
+                    <h2><i class="fas fa-edit"></i> Kirim Aspirasi Anda</h2>
+                    <p class="section-description">Sampaikan pemikiran, masalah, atau ide Anda terkait governance digital dan kehidupan digital sehari-hari. Suara Anda sangat berarti!</p>
+                    <form id="aspirasi-form" class="aspirasi-form">
+                        <div class="form-group">
+                            <label for="topik-aspirasi">Topik Aspirasi:</label>
+                            <select id="topik-aspirasi" name="topik-aspirasi" required>
+                                <option value="">-- Pilih Topik --</option>
+                                <option value="Privasi Data">Privasi Data & Perlindungan Pribadi</option>
+                                <option value="Keamanan Siber">Keamanan Siber & Penipuan Online</option>
+                                <option value="Etika AI">Etika & Regulasi AI</option>
+                                <option value="Layanan Pemerintah">Layanan Digital Pemerintah (e-gov)</option>
+                                <option value="Infrastruktur">Infrastruktur & Akses Digital</option>
+                                <option value="Literasi Digital">Literasi & Pendidikan Digital</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="judul-aspirasi">Judul Aspirasi (Singkat & Jelas):</label>
+                            <input type="text" id="judul-aspirasi" name="judul-aspirasi" placeholder="Contoh: Perluasan Jaringan Internet di Desa" required maxlength="100">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deskripsi-aspirasi">Deskripsi Aspirasi (Jelaskan Masalah/Ide Anda):</label>
+                            <textarea id="deskripsi-aspirasi" name="deskripsi-aspirasi" rows="8" placeholder="Jelaskan secara detail aspirasi Anda, masalah yang dihadapi, dan mengapa hal itu penting..." required></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="anonim-aspirasi" name="anonim-aspirasi">
+                            <label for="anonim-aspirasi">Kirim sebagai **Anonim** (ID Anda tidak akan ditampilkan)</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-submit"><i class="fas fa-paper-plane"></i> Kirim Aspirasi</button>
+                        <div id="form-message" class="message-box" style="display:none;"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Aspirasi Publik (Daftar Dinamis dalam Layout Modern) -->
+        <section id="aspirasi-publik" class="content-section">
+            <div class="container">
+                <h2><i class="fas fa-list-alt"></i> Aspirasi Publik</h2>
+                <p class="section-description">Telusuri aspirasi yang telah disampaikan oleh masyarakat lainnya. Mari berdiskusi dan berkolaborasi!</p>
+
+                <div class="filter-controls card">
+                    <label for="filter-topik"><i class="fas fa-filter"></i> Filter Berdasarkan Topik:</label>
+                    <select id="filter-topik">
+                        <option value="all">Semua Topik</option>
+                        <option value="Privasi Data">Privasi Data</option>
+                        <option value="Keamanan Siber">Keamanan Siber</option>
+                        <option value="Etika AI">Etika AI</option>
+                        <option value="Layanan Pemerintah">Layanan Digital Pemerintah</option>
+                        <option value="Infrastruktur">Infrastruktur</option>
+                        <option value="Literasi Digital">Literasi Digital</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                    <label for="sort-by"><i class="fas fa-sort"></i> Urutkan Berdasarkan:</label>
+                    <select id="sort-by">
+                        <option value="latest">Terbaru</option>
+                        <!-- Opsi lain bisa ditambahkan seperti 'popular' jika ada fitur like/vote -->
+                    </select>
+                </div>
+
+                <div id="aspirasi-list" class="aspirasi-grid">
+                    <!-- Aspirasi akan dimuat secara dinamis di sini oleh JavaScript -->
+                    <p id="loading-aspirasi" class="loading-message">Memuat aspirasi...</p>
+                    <p id="no-aspirasi" class="no-data-message" style="display: none;">Belum ada aspirasi yang tersedia.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Tentang Asra -->
+        <section id="tentang-asra" class="info-section bg-light">
+            <div class="container">
+                <div class="card">
+                    <h2><i class="fas fa-info-circle"></i> Tentang Asra</h2>
+                    <div class="text-content">
+                        <p><strong>Asra (Aspirasi Rakyat)</strong> adalah platform inisiatif yang didedikasikan untuk menjembatani komunikasi antara masyarakat dan pembuat kebijakan di bidang governance digital.</p>
+                        <p>Kami percaya bahwa setiap warga negara memiliki hak untuk bersuara dan berpartisipasi aktif dalam pembentukan ekosistem digital yang aman, adil, inklusif, dan bertanggung jawab.</p>
+                        <h3>Misi Kami:</h3>
+                        <ul>
+                            <li><i class="fas fa-lightbulb"></i> Memberdayakan masyarakat dengan informasi yang relevan tentang hak dan isu digital.</li>
+                            <li><i class="fas fa-comments"></i> Menyediakan saluran yang mudah diakses untuk menyampaikan aspirasi dan masukan.</li>
+                            <li><i class="fas fa-handshake"></i> Mendorong dialog konstruktif antara masyarakat dan pemerintah.</li>
+                            <li><i class="fas fa-chart-line"></i> Meningkatkan transparansi dalam proses kebijakan digital.</li>
+                        </ul>
+                        <p>Terima kasih telah menjadi bagian dari perubahan positif ini!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Aplikasi -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Asra</h3>
+                    <p>Aspirasi Rakyat: Suara Anda, Kebijakan Digital Masa Depan.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="#kirim-aspirasi">Kirim Aspirasi</a></li>
+                        <li><a href="#aspirasi-publik">Aspirasi Publik</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Hubungi Kami</h3>
+                    <p><i class="fas fa-envelope"></i> info.asra@example.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Asra (Aspirasi Rakyat). Semua Hak Dilindungi.</p>
+                <p>Dibuat untuk tujuan edukasi dan partisipasi publik.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs - Harus dimuat sebelum script.js -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Variabel global yang disediakan oleh Canvas (penting untuk Firebase)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // Inisialisasi Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // Export variabel ke global window agar bisa diakses oleh script.js
+        window.firebaseApp = app;
+        window.firebaseDb = db;
+        window.firebaseAuth = auth;
+        window.initialAuthToken = initialAuthToken;
+        window.firebaseCollection = collection;
+        window.firebaseAddDoc = addDoc;
+        window.firebaseOnSnapshot = onSnapshot;
+        window.firebaseQuery = query;
+        window.firebaseOrderBy = orderBy;
+        window.firebaseSignInAnonymously = signInAnonymously;
+        window.firebaseSignInWithCustomToken = signInWithCustomToken;
+        window.firebaseOnAuthStateChanged = onAuthStateChanged;
+        window.currentAppId = appId;
+    </script>
+
+    <!-- JavaScript Aplikasi -->
+    <script src="script.js"></script>
+</body>
+</html>
+
