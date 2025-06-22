@@ -1,3 +1,18 @@
+// === Pendaftaran Service Worker (Untuk PWA Installability) ===
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js') // Daftarkan file sw.js
+      .then(registration => {
+        console.log('Service Worker terdaftar dengan scope:', registration.scope);
+      })
+      .catch(error => {
+        console.error('Pendaftaran Service Worker gagal:', error);
+      });
+  });
+}
+// =========================================================
+
+
 // Memastikan DOM sepenuhnya dimuat sebelum menjalankan script
 document.addEventListener('DOMContentLoaded', function() {
     // --- Inisialisasi & Konfigurasi Firebase ---
@@ -263,4 +278,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Jadi tidak perlu memanggilnya secara langsung di sini lagi.
 });
 
-                      
+            
