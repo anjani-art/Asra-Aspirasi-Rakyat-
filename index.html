@@ -9,7 +9,7 @@
     <link rel="manifest" href="manifest.json">
     <!-- Meta tag untuk browser Safari pada iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Asra">
     
     <!-- CSS untuk Styling -->
@@ -195,13 +195,26 @@
 
     <!-- Firebase SDKs - Harus dimuat sebelum script.js -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js"; // Mengubah versi SDK Firebase menjadi 11.6.1
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Variabel global yang disediakan oleh Canvas (penting untuk Firebase)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        
+        // ====================================================================
+        // KONFIGURASI FIREBASE ANDA YANG SEBENARNYA (dari konsol Firebase)
+        const firebaseConfig = {
+          apiKey: "AIzaSyAvzOvIgjvNBi-F3PDAPHbtrri2uwVZRIE",
+          authDomain: "aspirasirakyat-28016.firebaseapp.com",
+          projectId: "aspirasirakyat-28016",
+          storageBucket: "aspirasirakyat-28016.firebasestorage.app",
+          messagingSenderId: "768601570336",
+          appId: "1:768601570336:web:9d8be311c84b8526659045"
+        };
+        // ====================================================================
+
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
         // Inisialisasi Firebase
